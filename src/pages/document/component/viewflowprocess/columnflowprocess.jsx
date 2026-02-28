@@ -14,7 +14,7 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
 export const columns = [
-    { field: 'num', headerName: 'NO', width: 50 },
+    // { field: 'num', headerName: 'NO', width: 50 },
     {
         field: 'JournalCode',
         headerName: 'Journal Number',

@@ -32,7 +32,7 @@ function ViewFlowProcess() {
     const userId = sessionStorage.getItem("userId")
     const FetchApis = new FetchApi();
     const [datalist, setDatalist] = useState([])
-    const[textSearch,setTextSearch]=useState([])
+    const [textSearch, setTextSearch] = useState([])
 
     useEffect(() => {
         if (id == '1') {
@@ -58,9 +58,13 @@ function ViewFlowProcess() {
         await FetchApis.FethcGet(`/document/DocumentByStateAll/${userId}`).then(res => {
 
             if (res.status == 200) {
+                if (res.data.length == 0) {
+                    jourallsuccess()
+                } else {
+                    setDatalist(res.data);
+                    setTextSearch(res.data)
+                }
 
-                setDatalist(res.data);
-                setTextSearch(res.data)
             }
 
         })
@@ -105,8 +109,13 @@ function ViewFlowProcess() {
 
         await FetchApis.FethcGet(`/document/DocumentSuccessfullylist/${userId}`).then(res => {
             if (res.status == 200) {
-                setDatalist(res.data);
-                setTextSearch(res.data)
+                if (res.data.length == 0) {
+                    jourallsuccess()
+                } else {
+                    setDatalist(res.data);
+                    setTextSearch(res.data)
+                }
+
 
             }
 
@@ -152,20 +161,29 @@ function ViewFlowProcess() {
         })
     }
 
+    function jourallsuccess() {
+        FetchApis.FethcGet(`/document/JournalSuccessfullylist`).then(res => {
+            setDatalist(res.data);
+            setTextSearch(res.data)
+        })
+    }
+
+
+
     function getRowId(row) {
         return row.JournalID;
     }
 
-    function getSearchJournal(ev){
-                console.log(ev)
-            const filteredData = textSearch.filter(item => {
-              return Object.values(item)
+    function getSearchJournal(ev) {
+        console.log(ev)
+        const filteredData = textSearch.filter(item => {
+            return Object.values(item)
                 .join('')
                 .toLowerCase()
                 .includes(ev.toLowerCase());
-            });
+        });
 
-            setDatalist(filteredData);
+        setDatalist(filteredData);
     }
 
     return (
@@ -215,6 +233,15 @@ function ViewFlowProcess() {
                             </p>
                         </div>
                     </div>}
+                      {id == '5' && <div>
+                        <div style={{ backgroundColor: '#ececec' }}>
+                            <h1 className="text-3xl font-bold text-gray-900">Document List Process</h1>
+                            <p className="text-gray-600 mt-2">Manage document workflow</p>
+                            <p className="text-gray-600 mt-2" style={{ padding: 10 }}>
+                                <label style={{ backgroundColor: '#edbb99', padding: 5, borderRadius: 20 }}>Total {datalist.length}</label>
+                            </p>
+                        </div>
+                    </div>}
 
                     <div>
                         <Paper
@@ -228,8 +255,8 @@ function ViewFlowProcess() {
                                 sx={{ ml: 1, flex: 1 }}
                                 placeholder="Search "
                                 // inputProps={{ 'aria-label': 'search' }}
-                                onChange={(e)=>getSearchJournal(e.target.value)}
-                                // onChange={(e) => filterBySearch(e)}
+                                onChange={(e) => getSearchJournal(e.target.value)}
+                            // onChange={(e) => filterBySearch(e)}
 
                             />
                             <IconButton type="button" sx={{ p: '10px' }} aria-label="search">

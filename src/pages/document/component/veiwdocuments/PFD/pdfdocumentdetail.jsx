@@ -43,7 +43,7 @@ function Pdfdocumentdetail(props) {
     return (
         <View>
             {dataDetial.map((item, index) => (
-                <View style={[styles.textBoldfonts10, styles.bodyspace, { width: '100%', marginTop: 1, borderWidth: 0.5, borderColor: '#dddede' }]}>
+                <View style={[styles.textBoldfonts10, styles.bodyspace, { width: '100%', marginTop: 1, borderWidth: 0.5, borderColor: '#dddede' }]} key={index} break={index == 5}>
                     <View style={{ width: '25%', padding: 5 }}>
                         <View>
                             <Text style={{ fontWeight: 800 }}>{item.PkDescription}</Text>

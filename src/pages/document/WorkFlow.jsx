@@ -14,7 +14,7 @@ function WorkFlow() {
     const userId = sessionStorage.getItem('userId')
     const [countInDraft, setCountInDraft] = useState(0)
     const [countInpreveiw, setCountInpreveiw] = useState(0)
-    const[dataStatusType,setDataStatusType]=useState('')
+    const [dataStatusType, setDataStatusType] = useState('')
 
     const [countPading, setCountPading] = useState(0)
 
@@ -34,6 +34,11 @@ function WorkFlow() {
 
             if (res.status == 200) {
                 setCountAll(res.data.length);
+
+                if (res.data.length == 0) {
+                    jourallsuccess()
+                }
+
             }
 
         })
@@ -52,11 +57,11 @@ function WorkFlow() {
             // console.log(res);
             if (res.status == 200) {
                 setCountPading(res.data.length)
-             
+
                 if (res.data.length > 0) {
-                  
-                   setFlowsateall(res.data[0].stateflow)
-                } 
+
+                    setFlowsateall(res.data[0].stateflow)
+                }
 
             }
 
@@ -65,17 +70,20 @@ function WorkFlow() {
         await FetchApis.FethcGet(`/document/DocumentApprovedlist/${userId}`).then(res => { // approved แล้ว
 
             if (res.status == 200) {
-                setCountApproved(res.data.length)
+                if (res.data.length > 0) {
+                    setCountApproved(res.data.length)
+                }
+
             }
 
         })
 
         await FetchApis.FethcGet(`/document/DocumentRejectlist/${userId}`).then(res => { // รายการที่ reject กลับมา
-           
+
             if (res.data.length > 0) {
                 setDataStatusType(res.data[0].statusType)
                 setCountReject(res.data.length)
-            }else{
+            } else {
                 setDataStatusType("")
             }
 
@@ -85,14 +93,18 @@ function WorkFlow() {
             // console.log(res)
             if (res.status == 200) {
                 setCountRejectEid(res.data.length);
-               
+
             }
 
         })
 
         await FetchApis.FethcGet(`/document/DocumentSuccessfullylist/${userId}`).then(res => {
             if (res.status == 200) {
-                setCountSuccessfully(res.data.length);
+
+                if (res.data.length > 0) {
+                    setCountSuccessfully(res.data.length);
+                }
+
 
             }
 
@@ -104,6 +116,15 @@ function WorkFlow() {
 
             }
 
+        })
+    }
+
+    function jourallsuccess() {
+        FetchApis.FethcGet(`/document/JournalSuccessfullylist`).then(res => {
+            // console.log(res.data)
+            setCountAll(res.data.length)
+            setCountSuccessfully(res.data.length);
+            // setCountApproved(res.data.length)
         })
     }
 
@@ -120,7 +141,7 @@ function WorkFlow() {
                     </div>
                 </div>
                 <div style={{ flexDirection: 'row', display: 'flex', justifyContent: 'space-around' }}>
-                       
+
                     <CardWorkflow
                         countInpreveiw={countInpreveiw}
                         countPading={countPading}

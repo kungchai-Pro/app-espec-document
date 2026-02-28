@@ -272,12 +272,14 @@ const ViewDocuments = (props) => {
 
                                 <div style={{ backgroundColor: '#ebedef', padding: 5 }}>
 
-                                    {dataHeader.statusflow != '105' ? <label style={{
+                                    {dataHeader.statusflow != '105' ?<div> <label style={{
                                         color: '#e74c3c',
                                         alignItems: 'center',
                                         alignContent: 'center',
                                         justifyContent: 'center', display: 'flex'
-                                    }}>In Process<DoNotDisturbOnIcon /></label> :
+                                    }}>Preview</label> 
+                                    <PopUpViewpfd jourID={dataHeader.JournalID} />
+                                    </div>:
                                         <div style={{ justifyContent: 'center', display: 'flex' }}>
                                             <label style={{
                                                 color: '#1e8449',

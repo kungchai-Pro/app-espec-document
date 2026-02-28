@@ -318,18 +318,51 @@ const RejectEditdocument = (props) => {
 
     }
 
-    const handleFile = event => {
-        var input = document.getElementById('loadfile');
-        const file = input.files[0]
-        const size = file.size // it's in bytes
+    // const handleFile = event => {
+    //     var input = document.getElementById('loadfile');
+    //     const file = input.files[0]
+    //     const size = file.size // it's in bytes
 
-        UploadFiles(file).then(res => { //upload file ก่อน ค่อย insert 
-            if (res) {
-                setDataHeader({ ...dataHeader, PartFileECN: res.filename })
+    //     UploadFiles(file).then(res => { //upload file ก่อน ค่อย insert 
+    //         if (res) {
+    //             setDataHeader({ ...dataHeader, PartFileECN: res.filename })
+    //         }
+    //     })
+
+    // };
+
+        const handleFile = event => {
+            var input = document.getElementById('loadfile');
+    
+            if (input.files[0]) {
+                const file = input.files[0]
+                const size = file.size // it's in bytes
+                const ext = file.name.split(".").pop();
+    
+                const newName = `${Date.now()}.` + ext;
+                const renamedFile = new File([file], newName, {
+                    type: file.type,
+                });
+    
+                if (size <= 5000000) {
+                    UploadFiles(renamedFile).then(res => { //upload file ก่อน ค่อย insert 
+                        if (res) {
+                            setDataHeader({ ...dataHeader, PartFileECN: newName })
+                        }
+                    })
+                } else {
+                    // alert('ขนาดใหญ่เกินไปครับกรุณาอยากเกิน 5M')
+                    Swal.fire({
+                        title: "แจ้งเตือน",
+                        text: "ขนาดไฟล์เกินกำหนด 5M ",
+                        icon: "warning"
+                    });
+    
+                }
+    
             }
-        })
-
-    };
+    
+        };
 
     function isRemoveImages(index) {
         const newArray = [...addImages];

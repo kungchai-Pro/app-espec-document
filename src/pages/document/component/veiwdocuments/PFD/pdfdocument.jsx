@@ -98,11 +98,19 @@ function Pdfdocument(props) {
                 <Document>
                     <Page size="A4" >
                         <View style={[styles.page, styles.textBoldfonts13]}>
-                            <View style={{ alignItems: 'flex-end', display: 'flex' }}>
+                         
+                            <View style={{ alignItems: 'flex-end', display: 'flex' ,justifyContent: 'space-between' ,flexDirection:'row'}}>
+                               {jourHeader.statusflow=='105'?<Text style={[styles.textBoldfonts11,{color:'green'}]}>ผ่านอนุมัติ</Text>:<Text style={[styles.textBoldfonts11,{color:'red'}]}>ยังไม่ผ่านอนุมัติ</Text>} 
+
                                 <Text render={({ pageNumber, totalPages }) => (
                                     `${pageNumber} / ${totalPages}`
                                 )} fixed />
+
                             </View>
+
+                            {/* <View>
+                               
+                            </View> */}
 
                             <View style={[styles.textBoldfonts11, { margin: 1, padding: 3, borderWidth: 1, borderColor: '#dddede' }]}>
                                 <View style={[styles.textBoldfonts10, {
@@ -267,10 +275,10 @@ function Pdfdocument(props) {
                                     )} fixed />
                                 </View>
                                 {dataImageList.map((item, index) => (
-                                    <View key={index} style={[styles.textBoldfonts10, {
+                                    <View key={index} break={index == 5} style={[styles.textBoldfonts10, {
                                         flexDirection: 'row', margin: 1,
                                         borderWidth: 0.5, borderColor: '#dddede', padding: 5
-                                    }]}>
+                                    }]}  >
                                         <View style={{ width: '30%' }}>
                                             <View>
                                                 <Text style={{ marginRight: 5, fontWeight: 800 }}>หัวข้อ</Text>
@@ -302,10 +310,10 @@ function Pdfdocument(props) {
                                     </View>
                                 ))}
                                 {journalImages.map((item, index) => (
-                                    <View key={index} style={[styles.textBoldfonts10, {
+                                    <View key={index}  break={index == 5} style={[styles.textBoldfonts10, {
                                         flexDirection: 'row', margin: 1,
                                         borderWidth: 0.5, borderColor: '#dddede', padding: 5
-                                    }]}>
+                                    }]} >
                                         <View style={{ width: '30%' }}>
                                             <View>
                                                 <Text style={{ marginRight: 5, fontWeight: 800 }}>หัวข้อ</Text>
@@ -335,9 +343,7 @@ function Pdfdocument(props) {
 
                                             <Text style={{ fontWeight: '800' }}>ผู้อนุมัติที่ {index + 1}</Text>
                                             <Text>คุณ {item.userbyflow}</Text>
-                                            <Text>{moment(item.Enddatetime).format('DD/MM/yyyy')}</Text>
-                                            {/* <Text>วันที่อนุมัติ {item.Enddatetime.substring(0, 10)}</Text> */}
-
+                                            {item.Enddatetime==null ? <Text style={{ color: 'red' }}>ยังไม่อนุมัติ</Text> : <Text>{moment(item.Enddatetime).format('DD/MM/yyyy')}</Text>}
                                         </View>
                                     ))}
 

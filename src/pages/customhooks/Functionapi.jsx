@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// export const host = `http://localhost:4001/api/spec`;       
-export const host=`https://packingspecsheet.com/v1/api/spec`;   
+export const host = `http://localhost:4001/api/spec`;       
+// export const host=`https://packingspecsheet.com/v1/api/spec`;   
 export const urlerp=`https://www.pppi-fulfil.com/services/erp/api/v1/`;
 
 export default class FetchApi {
