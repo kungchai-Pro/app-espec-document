@@ -36,7 +36,7 @@ function PopUpItemdetail(props) {
   function GetItemDetails() {
 
     FetchErps.FethcGet(`/erpstoreSpec/getItemDetails/ALL`).then(res => {
-      console.log(res.listall)
+      // console.log(res.listall)
 
       if (res.success == true) {
         setDataItemdatail(res.listall);

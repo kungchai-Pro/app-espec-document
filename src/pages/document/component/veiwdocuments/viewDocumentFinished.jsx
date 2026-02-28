@@ -25,7 +25,7 @@ import { Container } from '@mui/material';
 import ViewDocumentdetail from './viewDocumentdetail';
 import PopUpshowImages from '../newDocument/popupcomponent/popUpshowImages';
 import StepViewProcess from './stepViewProcess';
-
+import PopUpViewCancelJournal from '../newDocument/popupcomponent/popViewCancelJournal';
 const ViewDocumentFinished = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -267,6 +267,7 @@ const ViewDocumentFinished = (props) => {
                                 <div>
                                     <label style={{ padding: 5, backgroundColor: '#f5dc9f', borderRadius: 3, color: '#68684', marginRight: 10 }}>ส่วนของคำร้องขอ</label>
                                     {dataHeader.noteRevise!=""&&<PopUpReviseByid Id={props.jourID}/>}
+                                    {dataHeader.statusflow=='200'&&<PopUpViewCancelJournal jourId={props.jourID}/>}
                                     <PopUphistoryNotes jourID={props.jourID} />
                                     <div style={{fontSize:12,padding:5,flexDirection:'row',display:'flex',alignContent:'center'}}>
                                         <label style={{marginRight:10}}>Revision ล่าสุด </label>

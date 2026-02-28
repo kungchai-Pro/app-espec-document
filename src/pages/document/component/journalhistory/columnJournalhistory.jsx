@@ -49,6 +49,18 @@ export const columns = [
         headerName: 'status',
         // type: 'number',
         width: 100,
+                renderCell: (params) => {
+            return (<div style={{ flexDirection: 'row', width: '100%',
+            alignContent: 'flex-start', display: 'flex',backgroundColor: params.row.statusName=='Cancel' ? '#ED765F' : '' }}>
+                    <div style={{ 
+                         color: params.row.statusName=='Cancel' ? 'white' : 'black', 
+                         color: params.row.statusName=='Successful' ? 'green' : 'black', 
+                         padding: '5px 10px', borderRadius: 5 }}>
+                        {params.row.statusName}
+                    </div>
+                </div>
+            )
+        }
         // editable: true,
     },
         {

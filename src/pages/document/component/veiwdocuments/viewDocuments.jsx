@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn';
+// import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import PopUpViewpfd from './PFD/PopUpViewpfd';
 import './viewdocument.scss';
@@ -16,7 +16,7 @@ import { Route, Link, Routes, useLocation, useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ImageZoom from "react-image-zooom";
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import PopUphistoryNotes from './viewpopUp/PopUphistoryNotes';
 import PopUpReviseByid from './viewpopUp/popUpReviseByid';
 import moment from 'moment/moment.js';
@@ -25,6 +25,7 @@ import { Container } from '@mui/material';
 import ViewDocumentdetail from './viewDocumentdetail';
 import PopUpshowImages from '../newDocument/popupcomponent/popUpshowImages';
 import StepViewProcess from './stepViewProcess';
+import PopUpViewCancelJournal from '../newDocument/popupcomponent/popViewCancelJournal';
 
 const ViewDocuments = (props) => {
     const navigate = useNavigate();
@@ -261,6 +262,7 @@ const ViewDocuments = (props) => {
                                 <div>
                                     <label style={{ padding: 5, backgroundColor: '#f5dc9f', borderRadius: 3, color: '#68684', marginRight: 10 }}>ส่วนของคำร้องขอ</label>
                                     {dataHeader.noteRevise!=""&&<PopUpReviseByid Id={props.jourID}/>}
+                                    {dataHeader.statusflow=='200'&&<PopUpViewCancelJournal jourId={props.jourID}/>}
                                     <PopUphistoryNotes jourID={props.jourID} />
                                     <div style={{fontSize:12,padding:5,flexDirection:'row',display:'flex',alignContent:'center'}}>
                                         <label style={{marginRight:10}}>Revision ล่าสุด </label>

@@ -28,6 +28,7 @@ import { objectHearder, ItmeTypeID } from './objectdata/typeobject';
 import ImageZoom from "react-image-zooom";
 import SearchIcon from '@mui/icons-material/Search';
 import PopUpEditJournalImages from './popupcomponent/popUpEditJournalImages';
+import PopUpCancelJournal from './popupcomponent/popUpCancelJournal';
 import moment from 'moment';
 import PopUpChangeNewFlow from './popupcomponent/popUpChangeNewFlow';
 
@@ -77,7 +78,7 @@ const RejectEditdocument = (props) => {
     }
 
     var datenow = d.getFullYear() + "-" + convertmonth + "-" + convertdate
-    var datenowtime = d.getFullYear() + "-" + convertmonth + "-" + convertdate + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
+    // var datenowtime = d.getFullYear() + "-" + convertmonth + "-" + convertdate + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
 
     const [addImages, setAddImages] = useState([]);
     const ref_imagse = useRef(null);
@@ -628,7 +629,6 @@ const RejectEditdocument = (props) => {
     }
 
 
-
     //  การทำบันทึก reject 
     function PopUpEditReject(props) {
         const FetchApis = new FetchApi()
@@ -765,6 +765,7 @@ const RejectEditdocument = (props) => {
 
                 <Container>
                     <CssBaseline />
+                    {JSON.stringify(datajournal)}
                     <div style={{ justifyContent: 'flex-end', display: 'flex', marginTop: 10 }}>
                         {datajournal &&
                             <PopUpEditReject
@@ -774,6 +775,10 @@ const RejectEditdocument = (props) => {
                                 flowStatus={flowStatus}
                                 flowStateEnd={flowStateEnd}
                             />}
+
+                            <PopUpCancelJournal jourId={datajournal.JournalID} 
+                            Revise={datajournal.Revise} StandardCode={datajournal.StandardCode}/>
+
                         <button className='customWarning-button' onClick={() => navigate(-1)}>ยกเลิก</button>
                     </div>
                     {HeaderTypeproduct.length > 0 &&
