@@ -765,13 +765,12 @@ const RejectEditdocument = (props) => {
 
                 <Container>
                     <CssBaseline />
-                    {JSON.stringify(datajournal)}
                     <div style={{ justifyContent: 'flex-end', display: 'flex', marginTop: 10 }}>
                         {datajournal &&
                             <PopUpEditReject
                                 notereject={notedetail}
                                 datajournal={datajournal}
-                                userId={userId}
+                                userId={userId} 
                                 flowStatus={flowStatus}
                                 flowStateEnd={flowStateEnd}
                             />}
