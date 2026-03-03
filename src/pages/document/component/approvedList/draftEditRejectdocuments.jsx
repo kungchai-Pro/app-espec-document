@@ -245,7 +245,8 @@ const DraftEditRejectdocuments = (props) => {
         return (<div style={{ width: '100%' }}>
 
             {journalImages.map((val, index) =>
-                <Box sx={{ height: 'auto', marginTop: '1', padding: 1, width: '100%', display: 'flex', fontSize: 14 }}>
+                <Box sx={{ height: 'auto', marginTop: '1', padding: 1, width: '100%', display: 'flex', fontSize: 14 
+                }}>
                     <div className='row-pace-w100-line'
                         style={{ backgroundColor: '#faf8f8', padding: 10 }}>
                         {/* ส่วนที่1 */}
@@ -498,7 +499,7 @@ const DraftEditRejectdocuments = (props) => {
                                 flowStatus={flowStatus}
                                 flowStateEnd={flowStateEnd}
                             />}
-                        {/* <button className='customSuccess-button' style={{ marginRight: 10 }} onClick={() => isSaveUpdate()}>บันทึก</button> */}
+                       
                         <button className='customWarning-button' onClick={() => navigate(-1)}>ยกเลิก</button>
                     </div>
 

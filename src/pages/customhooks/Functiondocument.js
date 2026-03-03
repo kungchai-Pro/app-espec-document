@@ -2,11 +2,12 @@ import FetchApi from "./Functionapi";
 import { objectDetial, objectHearder } from "../document/component/newDocument/objectdata/typeobject";
 const FetchApis = new FetchApi();
 
-export async function NewDocumentDeatil(jourCode) {
+export async function NewDocumentDeatil(jourCode,slotdetail) {
 
     let dataDetail = {
         ...objectDetial,
-        JournalCode: jourCode
+        JournalCode: jourCode,
+        SlotNo: slotdetail
     }
 
     return await FetchApis.FethcPost(`/document/createDocumentdetail`, dataDetail).then(res => {

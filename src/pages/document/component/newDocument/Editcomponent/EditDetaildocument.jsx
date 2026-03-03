@@ -227,7 +227,6 @@ const EditDetaildocument = (props) => {
                 <div ref={props.ref_imagse}>
                   <div style={{ flexDirection: 'row', justifyContent: 'center', display: 'flex' }}>
 
-
                     <div style={{ marginTop: 5, marginRight: 30, flexDirection: 'row', justifyContent: 'flex-end', display: 'flex' }}>
                       <Button variant="outlined" size="small" color='error' onClick={() => RevoveImage(val.JournalID)}>Remove</Button>
                     </div>
@@ -281,7 +280,7 @@ const EditDetaildocument = (props) => {
       prevItems.map((item, i) =>
         i === index ? {
           ...item, [name]: cleanInput,
-          ['SlotNo']: index + 1
+          // ['SlotNo']: index + 1
         } : item
       )
     );
@@ -345,18 +344,28 @@ const EditDetaildocument = (props) => {
     UpdateDetailList(dataDetial);
   }
 
-
   const isAddDetailList = (v) => {
+     var newslot = 1;
+    if(dataDetial.length == 0){
+       newslot = 1;
+    }else{
+     var  slotdetail=dataDetial[dataDetial.length-1].SlotNo;
+     newslot = parseInt(slotdetail) + 1;
+    }
+
     setOpenAddslot(v)
     if (dataDetial.JournalID !== "") {
+
       UpdateDetailList(dataDetial)
-      NewDocumentDeatil(props.dataHeader.JournalCode).then(res => {
+
+      NewDocumentDeatil(props.dataHeader.JournalCode,newslot).then(res => {
         if (res) {
 
           getjourDetailList()
 
         }
       })
+
     }
 
     setTimeout(() => {
@@ -380,7 +389,7 @@ const EditDetaildocument = (props) => {
           ['NetWeight']: Netweight,
           ['TareWeight']: Taraweight,
           ['GrossWeight']: GrossWeight,
-          ['SlotNo']: i + 1
+          // ['SlotNo']: i + 1
         } : item,
       )
     );
@@ -424,7 +433,8 @@ const EditDetaildocument = (props) => {
       {dataDetial.length > 0 &&
         dataDetial.map((item, index) => (<div>
           {userId != item.UserIDConfirm ? <ViewDocumentdetailbyid idjour={item.JournalID} index={index} /> :
-            <Box sx={{ height: 'auto', marginTop: '10px', marginBottom: 5, backgroundColor: '#faf8f8', fontSize: 14 }} ref={ref_detial} key={index}>
+            <Box sx={{ height: 'auto', marginTop: '10px', marginBottom: 5, backgroundColor: '#faf8f8', fontSize: 14 
+            ,borderBlockColor:'red', borderBlockWidth: 1, borderBlockStyle: 'solid'}} ref={ref_detial} key={index}>
               <PopUpcuAddSlot opentAddslot={opentAddslot} inDataAddsolt={inDataAddsolt} index={index} />
               <div style={{ width: '100' }} >
                 <div className='row-pace-w100-line'>

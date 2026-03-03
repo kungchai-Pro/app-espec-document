@@ -319,19 +319,6 @@ const RejectEditdocument = (props) => {
 
     }
 
-    // const handleFile = event => {
-    //     var input = document.getElementById('loadfile');
-    //     const file = input.files[0]
-    //     const size = file.size // it's in bytes
-
-    //     UploadFiles(file).then(res => { //upload file ก่อน ค่อย insert 
-    //         if (res) {
-    //             setDataHeader({ ...dataHeader, PartFileECN: res.filename })
-    //         }
-    //     })
-
-    // };
-
         const handleFile = event => {
             var input = document.getElementById('loadfile');
     

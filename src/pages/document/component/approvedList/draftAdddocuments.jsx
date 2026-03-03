@@ -249,20 +249,13 @@ const DraftAdddocuments = (props) => {
 
                                 <div>ภาพประกอบ : {val.PkDescription} {val.ItemID}</div>
                                 <img src={host + `/file/images/files/${val.LocationPic}`} alt="My local" style={{ width: '100%', height: 280 }}/>
-                                {/* <ImageZoom
-                                    src={host + `/file/images/files/${val.LocationPic}`}
-
-                                    width={'auto'}
-                                    height={280}
-                                    alt="Logo"
-                                    zoom="200"
-                                /> */}
+                    
 
 
                             </div>
                             <div>
                                 <div>
-                                    {/* <SearchIcon style={{ width: 35, height: 35 }} /> */}
+                                   
                                      <PopUpshowImages nameimage={val.LocationPic} PkDescription={val.SubjectDetails} ItemID={val.ItemID}/>
                                 </div>
                             </div>
@@ -401,8 +394,7 @@ const DraftAdddocuments = (props) => {
                                         </div>
                                         <div style={{ width: '100%' }}>
                                             <label>{moment(dataHeader.TransDate).format('DD/MM/yyyy')}</label>
-                                            {/* <input type='text' value={dataHeader.TransDate} onChange={(e) => setDataHeader({ ...dataHeader, TransDate: e.target.value })}
-                                                disabled style={{ marginTop: 3 }} /> */}
+                                            
                                         </div>
                                     </div>
 
@@ -412,8 +404,7 @@ const DraftAdddocuments = (props) => {
                                         </div>
                                         <div style={{ width: '100%' }}>
                                         <label>{moment(dataHeader.LastApprovedDate).format('DD/MM/yyyy')}</label>
-                                            {/* <input type='text' disabled style={{ marginTop: 3 }} value={dataHeader.LastApprovedDate}
-                                                onChange={(e) => setDataHeader({ ...dataHeader, LastApprovedDate: e.target.value })} /> */}
+                                          
                                         </div>
                                     </div>
                                     <div className='row-pace-w100-line'>

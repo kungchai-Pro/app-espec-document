@@ -171,8 +171,12 @@ const ViewDocumentdetail = (props) => {
 
       {dataDetial.length > 0 &&
         dataDetial.map((item, index) => (
-          <Box sx={{ height: 'auto', marginTop: '10px', marginBottom: 5, backgroundColor: '#faf8f8', fontSize: 14 }} ref={ref_detial} key={index}>
-
+          <Box sx={{ height: 'auto', marginTop: '10px',
+          borderBlockColor:'red', borderBlockWidth: 1, borderBlockStyle: 'solid',
+          backgroundColor: '#faf8f8', fontSize: 14 }} ref={ref_detial} key={index}>
+              <div style={{padding:5,backgroundColor:'red',width:50,display:'flex',justifyContent:'center',alignItems:'center'}}>
+              <label style={{color:'#fff',}}>{index+1}</label>
+            </div> 
             <div style={{ width: '100' }} >
               <div className='row-pace-w100-line'>
 
@@ -191,13 +195,6 @@ const ViewDocumentdetail = (props) => {
                       <label style={{ fontWeight: '800', }}>{item.PkDescription}</label>
                     </div>
                   </div>
-
-                  {/* <div style={{ with: '100%', height: 70, padding: 5 }}>
-                    <textarea className='textarea-box'
-                      value={item.GroupRemark}
-                      style={{ width: '90%', height: 'auto' }}
-                      disabled />
-                  </div> */}
                   {item.GroupRemark != "" &&
                     <label
                       style={{
@@ -212,16 +209,6 @@ const ViewDocumentdetail = (props) => {
                     >
                       {item.GroupRemark}
                     </label>}
-                  {/* <div style={{
-                    with: '100%', height: 50,
-                    padding: 5,
-                    justifyContent: 'center',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    display: 'flex'
-                  }}>
-                  </div> */}
-
                 </div>
 
                 <div style={{ width: '100%', fontSize: 14 }}>

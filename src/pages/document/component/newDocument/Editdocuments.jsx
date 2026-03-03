@@ -391,10 +391,6 @@ const Editdocuments = (props) => {
 
 
     const handleChangeText = e => {
-        // var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
-        // Allow only letters, numbers, and spaces
-        // var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        // var dataclecking=format.test(e.target.value);
         var input = e.target.value;
         const cleanInput = input.replace(/[^a-zA-Z0-9ก-๙\s()#/.%:";,=\-&@$<>+*/?!]/g, "");
         setDataHeader({ ...dataHeader, [e.target.name]: cleanInput });
@@ -425,7 +421,6 @@ const Editdocuments = (props) => {
 
                 FetchApis.FethcDelete(`/journalImages/JournalImagsById/${id}`).then(res => {
                     if (res) {
-                        // getjourDetailList();
                         window.location.reload();
                     }
                 })
@@ -665,11 +660,7 @@ const Editdocuments = (props) => {
                                             </div>
                                             <div style={{ width: '100%' }}>
                                                 <label>{moment(dataHeader.TransDate).format('DD/MM/yyyy')}</label>
-                                                {/* <input type='text'
-                                                    name='TransDate'
-                                                    value={dataHeader.TransDate}
-                                                    onChange={(e) => handleChangeText(e)}
-                                                    disabled style={{ marginTop: 3 }} /> */}
+                                               
                                             </div>
                                         </div>
 
@@ -679,9 +670,7 @@ const Editdocuments = (props) => {
                                             </div>
                                             <div style={{ width: '100%' }}>
                                                 <label>{moment(dataHeader.LastApprovedDate).format('DD/MM/yyyy')}</label>
-                                                {/* <input type='text'
-                                                    disabled style={{ marginTop: 3 }} value={dataHeader.LastApprovedDate}
-                                                    onChange={(e) => setDataHeader({ ...dataHeader, LastApprovedDate: e.target.value })} /> */}
+                                                
                                             </div>
                                         </div>
                                         <div className='row-pace-w100-line'>
@@ -889,7 +878,7 @@ const Editdocuments = (props) => {
                                             </div>
                                         </div>
                                         <div className='row-pace-w100-line' style={{ marginTop: 3 }}>
-                                            {/* <PupUPbomList ItemId={dataHeader.ItemID} /> */}
+                                            
                                              {dataHeader.ItemID?<PupUPbomList ItemId={dataHeader.ItemID} />:<label style={{color:'red'}}>ข้อมูล BOM</label>}
                                             <div style={{ flexDirection: 'row', display: 'flex' }}>
 
