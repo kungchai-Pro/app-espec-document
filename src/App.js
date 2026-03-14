@@ -30,6 +30,7 @@ import Editjournalgroup from "./pages/document/component/approvedbygroup/editjou
 
 // flows 
 import ViewFlowProcess from "./pages/document/ViewFlowProcess";
+import ViewOnProcess from "./pages/document/ViewOnProcess";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -67,6 +68,7 @@ function App() {
             <Route path="sendStatus/:id" element={<SendStatus />} />
             <Route path="draftAdddocuments/:id" element={<DraftAdddocuments />} />
             <Route path="ViewFlowProcess/:id" element={<ViewFlowProcess />} />
+            <Route path="ViewOnProcess" element={<ViewOnProcess />} />
             <Route path="revisedocuments/:id" element={<Revisedocuments />} />
             <Route path="journalHistory" element={<JournalHistory />} />
             <Route path="reviseGroup" element={<SearchJournalgroup />} />

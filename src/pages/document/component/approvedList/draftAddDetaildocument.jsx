@@ -15,7 +15,7 @@ import { deletedetailById, NewDocumentDeatil, UpdateDetailList } from '../../../
 import PopUpAddImages from '../newDocument/popupcomponent/popUpAddImages';
 import PopUpAddJournalImages from '../newDocument/popupcomponent/popUpAddJournalImages';
 import PopUpshowImages from '../newDocument/popupcomponent/popUpshowImages';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import ViewDocumentdetailbyid from '../veiwdocuments/viewDocumentdetailbyid';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import PopUpEditImages from '../newDocument/popupcomponent/popUpEditImages';
@@ -26,7 +26,7 @@ import moment from 'moment/moment.js';
 // import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
-import ImageZoom from "react-image-zooom";
+// import ImageZoom from "react-image-zooom";
 
 const DraftAddDetaildocument = (props) => {
   const FetchApis = new FetchApi()
@@ -185,7 +185,7 @@ const DraftAddDetaildocument = (props) => {
                 }}>
 
                   <div>ภาพประกอบ : {val.PkDescription} {val.ItemID}</div>
-                  <img src={host + `/file/images/files/${val.LocationPic}`} alt="My local" style={{ width: '100%', height: 300 ,padding: 2}} />
+                  <img src={host + `/file/images/files/${val.LocationPic}`} alt="My local" style={{ width: '100%', height: 300, padding: 2 }} />
 
 
                 </div>
@@ -260,7 +260,20 @@ const DraftAddDetaildocument = (props) => {
     setReload(true)
     setDataDetial(prevItems =>
       prevItems.map((item, i) =>
-        i === index ? { ...item, ['PkDescription']: PKDESCRIPTION, ['ColabgroupId']: COLABGROUPID } : item
+        i === index ? {
+          ...item,
+          ['PkDescription']: PKDESCRIPTION,
+          ['ColabgroupId']: COLABGROUPID,
+          ['ItemID']: '',
+          ['ItemName']: '',
+          ['SpecID']: '',
+          ['Width']: '',
+          ['Depth']: '',
+          ['Height']: '',
+          ['NetWeight']: '',
+          ['TareWeight']: '',
+          ['GrossWeight']: '',
+        } : item
       )
     );
     setTimeout(() => {
@@ -272,15 +285,15 @@ const DraftAddDetaildocument = (props) => {
 
   const handleChange = (index, e) => {
     var input = e.target.value;
-   
+
     const cleanInput = input.replace(/[^a-zA-Z0-9ก-๙\s()#/.%:";,=\-&@$<>+*/?!]/g, "");
     const { name, value } = e.target
-   
+
     setDataDetial(prevItems =>
       prevItems.map((item, i) =>
         i === index ? {
           ...item, [name]: cleanInput,
-         
+
         } : item
       )
     );
@@ -288,7 +301,7 @@ const DraftAddDetaildocument = (props) => {
   }
 
   const getBatchproduct = (index, val) => {
-  
+
     setDataDetial(prevItems =>
       prevItems.map((item, i) =>
         i === index ? {
@@ -348,17 +361,17 @@ const DraftAddDetaildocument = (props) => {
 
   const isAddDetailList = (v) => {
     var newslot = 1;
-    if(dataDetial.length == 0){
-       newslot = 1;
-    }else{
-     var  slotdetail=dataDetial[dataDetial.length-1].SlotNo;
-     newslot = parseInt(slotdetail) + 1;
+    if (dataDetial.length == 0) {
+      newslot = 1;
+    } else {
+      var slotdetail = dataDetial[dataDetial.length - 1].SlotNo;
+      newslot = parseInt(slotdetail) + 1;
     }
-  
+
     setOpenAddslot(v)
     if (dataDetial.JournalID !== "") {
       UpdateDetailList(dataDetial)
-      NewDocumentDeatil(props.dataHeader.JournalCode,newslot).then(res => {
+      NewDocumentDeatil(props.dataHeader.JournalCode, newslot).then(res => {
         if (res) {
 
           getjourDetailList()
@@ -436,13 +449,13 @@ const DraftAddDetaildocument = (props) => {
         dataDetial.map((item, index) => (<div>
           {userId != item.UserIDConfirm ?
             <ViewDocumentdetailbyid idjour={item.JournalID} index={index} /> :
-            <Box sx={{ height: 'auto', marginTop: '10px', marginBottom: 5, backgroundColor: '#faf8f8', fontSize: 14 ,borderBlockColor:'red', borderBlockWidth: 1, borderBlockStyle: 'solid'}} ref={ref_detial} key={index}>
+            <Box sx={{ height: 'auto', marginTop: '10px', marginBottom: 5, backgroundColor: '#faf8f8', fontSize: 14, borderBlockColor: 'red', borderBlockWidth: 1, borderBlockStyle: 'solid' }} ref={ref_detial} key={index}>
               <PopUpcuAddSlot opentAddslot={opentAddslot} inDataAddsolt={inDataAddsolt} index={index} />
               <div style={{ width: '100' }} >
                 <div className='row-pace-w100-line'>
                   <div style={{ width: '25%' }}>
 
-                    <div style={{with: '100%', height: 'auto',padding: 5,justifyContent: 'center',flexDirection: 'column',alignItems: 'start',display: 'flex'}}>
+                    <div style={{ with: '100%', height: 'auto', padding: 5, justifyContent: 'center', flexDirection: 'column', alignItems: 'start', display: 'flex' }}>
                       <div style={{ flexDirection: 'row', display: 'flex' }}>
                         <label style={{
                           alignContent: 'start',

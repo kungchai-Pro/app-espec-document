@@ -15,6 +15,7 @@ function WorkFlow() {
     const [countInDraft, setCountInDraft] = useState(0)
     const [countInpreveiw, setCountInpreveiw] = useState(0)
     const [dataStatusType, setDataStatusType] = useState('')
+    const [journalInPro, setJournalInPro] = useState([]);
 
     const [countPading, setCountPading] = useState(0)
 
@@ -24,6 +25,7 @@ function WorkFlow() {
     const [countSuccessfully, setCountSuccessfully] = useState(0)
     const [countAll, setCountAll] = useState(0)
     const [flowsateall, setFlowsateall] = useState(0)
+
 
     useEffect(() => {
         getstatusAll();
@@ -117,14 +119,21 @@ function WorkFlow() {
             }
 
         })
+
+        await FetchApis.FethcGet(`/document/JournalNotSuccessfullylist`).then(res => { // รอ process flow 
+
+            if (res.status == 200) {
+                setJournalInPro(res.data)
+            }
+
+        })
     }
 
     function jourallsuccess() {
         FetchApis.FethcGet(`/document/JournalSuccessfullylist`).then(res => {
-            // console.log(res.data)
             setCountAll(res.data.length)
             setCountSuccessfully(res.data.length);
-            // setCountApproved(res.data.length)
+
         })
     }
 
@@ -157,6 +166,7 @@ function WorkFlow() {
                         countReject={countReject}
                         countRejectEdit={countRejectEdit}
                         dataStatusType={dataStatusType}
+                        journalInPro={journalInPro}
                     />
                 </div>
                 <div>

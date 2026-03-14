@@ -259,7 +259,19 @@ const EditDetaildocument = (props) => {
     setReload(true)
     setDataDetial(prevItems =>
       prevItems.map((item, i) =>
-        i === index ? { ...item, ['PkDescription']: PKDESCRIPTION, ['ColabgroupId']: COLABGROUPID } : item
+        i === index ? { ...item, 
+          ['PkDescription']: PKDESCRIPTION,
+           ['ColabgroupId']: COLABGROUPID,
+          ['ItemID']: '',
+          ['ItemName']: '',
+          ['SpecID']: '',
+          ['Width']: '',
+          ['Depth']: '',
+          ['Height']: '',
+          ['NetWeight']: '',
+          ['TareWeight']: '',
+          ['GrossWeight']: ''
+           } : item
       )
     );
 
