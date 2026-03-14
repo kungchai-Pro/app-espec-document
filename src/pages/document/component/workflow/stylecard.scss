@@ -1,0 +1,51 @@
+.card-workflow-document{
+   display: flex;
+//    background-color: red;
+   width: 304px;
+   height: 150px;
+   border-left: 5px solid #686867;
+   border-radius: 10px;
+}
+.card-workflow-pending{
+    display: flex;
+ //    background-color: red;
+    width: 304px;
+    height: 150px;
+    border-left: 5px solid #f9a010;
+    border-radius: 10px;
+    
+ }
+ .card-workflow-inpreview{
+    display: flex;
+ //    background-color: red;
+    width: 304px;
+    height: 150px;
+    border-left: 5px solid #51A2FF;
+    border-radius: 10px;
+    
+ }
+ .card-workflow-approved{
+    display: flex;
+ //    background-color: red;
+    width: 304px;
+    height: 150px;
+    border-left: 5px solid #10a117;
+    border-radius: 10px;
+    
+     
+ }
+ .card-workflow-processed{
+    display: flex;
+ //    background-color: red;
+    width: 304px;
+    height: 150px;
+    border-left: 5px solid #f01818;
+    border-radius: 10px;
+    
+     
+ }
+ .link-unline{
+   // text-decoration: underline;
+   text-decoration: none;
+   display:flex
+ }

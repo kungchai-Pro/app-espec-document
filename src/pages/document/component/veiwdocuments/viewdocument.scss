@@ -1,0 +1,35 @@
+.row-pace-w100-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    .input-box{
+        display: flex;
+        border-radius: 5px;
+        height: 28px;
+        border: 1px solid #b1b1b1;
+        margin-left: 3;
+        margin-right: 3;
+    }
+    .textarea-box{
+        display: flex;
+        height: 50px;
+        border-radius: 5px;
+        border: 1px solid #b1b1b1;
+        margin-left: 3;
+        margin-right: 3;
+    }
+}
+
+.layout-margintop-5 {
+    display: flex;
+    margin-top: 5px;
+    // padding:5px;
+
+}
+
+.layout-flex-line {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

@@ -1,0 +1,31 @@
+.btn {
+  background-color: #2563eb;     /* สีน้ำเงิน */
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+  background-color: #1d4ed8;     /* สีน้ำเงินเข้มเมื่อ hover */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.table, th, td {
+  border: 0.1px solid black;
+  border-collapse: collapse;
+  border-style: ridge;
+}
+th{
+  background-color:#E6E6E6;
+}
